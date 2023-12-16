@@ -1,0 +1,49 @@
+<div class="container">
+
+    <h1>Prestamos a cargo</h1>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="filtroPrestatario">Filtrar por Prestatario:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="filtroPrestatario" [(ngModel)]="filtroPrestatario">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" (click)="filtrarPorPrestatario()">Filtrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="alert alert-info mt-3" *ngIf="Prestamos.length==0">
+      No hay prestamos a tu cargo
+  </div>
+  
+  <table class="table mt-3 table-group-divider" *ngIf="Prestamos.length>0">
+      <thead>
+        <tr>
+          <th>Prestamo</th>
+          <th>Prestatario</th>
+          <th>Monto pedido</th>
+          <th>Nro de Cuotas</th>
+          <th>Estado</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prestamo of Prestamos | paginate:{itemsPerPage:5, currentPage: page }">
+          <td>{{ prestamo.id_prestamo }}</td>
+          <td>{{ prestamo.nombre_cliente }}</td>
+          <td>{{ prestamo.monto_prestamo }}</td>
+          <td>{{ prestamo.numero_cuotas }}</td>
+          <td>{{ prestamo.estado_prestamo }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" style="margin-right: 5px;" (click)="redireccionarAMantenimiento(prestamo.id_prestamo)">
+              <i class="fas fa-edit"></i> Ver detalles
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>  

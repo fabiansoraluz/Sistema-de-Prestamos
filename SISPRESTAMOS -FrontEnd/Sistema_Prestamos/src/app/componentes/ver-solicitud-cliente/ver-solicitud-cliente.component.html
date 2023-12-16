@@ -1,0 +1,43 @@
+<div class="container mt-5">
+    <h1 class="text-dark">Tus solicitudes</h1>
+<button routerLink="/admin/solicitud-ingresar" class="btn">
+    <i class="btn btn-dark">Solicitar prestamo</i> 
+</button>
+<table class="table mt-3 table-group-divider">
+    <thead>
+      <tr>
+        <th>ID Solicitud</th>
+        <th>Fecha solicitada</th>
+        <th>Días</th>
+        <th>Monto</th>
+        <th>Nombre de cuenta</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let solicitud of solicitudes">
+        <td>{{ solicitud.id }}</td>
+        <td>{{ solicitud.fechaSolicitud | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ solicitud.dias }}</td>
+        <td>{{ solicitud.monto }}</td>
+        <td>{{ solicitud.cuenta.nombre }}</td>
+        <td>
+          <ng-container *ngIf="solicitud.estado === 1; else estado2">
+            Pendiente
+          </ng-container>
+          <ng-template #estado2>
+            <ng-container *ngIf="solicitud.estado === 2; else estado3">
+              Aprobado
+            </ng-container>
+            <ng-template #estado3>
+              Rechazado
+            </ng-template>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" style="text-align: end;"></pagination-controls>
+</div>

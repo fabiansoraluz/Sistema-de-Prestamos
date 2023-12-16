@@ -1,0 +1,12 @@
+.Pendiente{
+    color: blue;
+    font-weight: bold;
+}
+.Aprobado{
+    color: green;
+    font-weight: bold;
+}
+.Rechazado{
+    color: red;
+    font-weight: bold;
+}

@@ -1,0 +1,46 @@
+<mat-toolbar class="mat-elevation-z8">
+
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+
+    SISTEMA DE PRESTAMO
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+
+        <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+
+        <h4 class="name">{{username}}</h4>
+
+        <mat-divider></mat-divider>
+
+        <ng-container *ngFor="let enlace of enlaces">
+            <li class="nav-list-item">
+                <i class="fa-solid fa-users-gear"></i>
+                <span>
+                    <a routerLink="{{enlace.ruta}}">{{enlace.descripcion}}</a>
+                </span>
+            </li>
+        </ng-container>
+
+        <mat-divider></mat-divider>
+        <div class="logout-container">
+            <button class="btn btn-outline-light mx-3" (click)="logout()" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </button>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

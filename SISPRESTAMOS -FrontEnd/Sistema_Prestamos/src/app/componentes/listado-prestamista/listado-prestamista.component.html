@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <h1>Prestamistas del Grupo {{grupo}}</h1>
+
+    <div class="row">
+        <div *ngIf="usuario_rol !== 'prestamista'">
+            <button (click)="registrar()" class="btn btn-">
+                <i class="btn btn-dark">Nuevo prestamista</i>
+            </button>
+        </div>
+        <div class="mt-2" *ngIf="usuario_rol !== 'jefe'">
+            <select class="form-control" (change)="cambiarGrupo()" [(ngModel)]="grupo">
+                <option value=0>Selecciona Grupo</option>
+                <option *ngFor="let grupo of grupos" [value]="grupo">Grupo {{grupo}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="alert alert-info mt-3" *ngIf="listaPrestamista.length==0">
+        No hay prestamistas registrados
+    </div>
+
+    <table class="table mt-3 table-group-divider" id="TablaPrestamistas" *ngIf="listaPrestamista.length>0">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Número de Teléfono</th>
+                <th>Distrito</th>
+                <th hidden>Id Prestamista</th>
+                <th *ngIf="usuario_rol !== 'prestamista'"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listaPrestamista | paginate:{itemsPerPage:9, currentPage: page }" >
+                <td>{{ item.username }}</td>
+                <!--{{item|json}}-->
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.paterno }}</td>
+                <td>{{ item.materno }}</td>
+                <td>{{ item.celular }}</td>
+                <td>{{ item.distrito}}</td>
+                <td hidden>{{ item.id_prestamista}}</td>
+                <td *ngIf="usuario_rol !== 'prestamista'">
+                    <div class="btn-group" role="group" aria-label="Acciones">
+                        <button class="btn btn-sm btn-primary" style="margin-right: 5px;" (click)="redireccionarAMantenimiento(item.id_prestamista)">
+                            <i class="fas fa-edit"></i> Actualizar
+                        </button>
+
+                        <button class="btn btn-sm btn-danger ml-2" (click)="eliminarPrestamista(item.id_prestamista)">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+
+</div>

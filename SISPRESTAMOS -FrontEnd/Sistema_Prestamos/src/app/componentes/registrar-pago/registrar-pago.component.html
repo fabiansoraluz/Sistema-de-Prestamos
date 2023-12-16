@@ -1,0 +1,80 @@
+<div class="container">
+    <h2>Detalles de la Cuota</h2>
+  
+    <form class="row g-3">
+      <div class="col-md-4">
+        <label for="idPrestamo">ID Prestamo</label>
+        <input type="text" id="idPrestamo" name="idPrestamo" [(ngModel)]="objCuota.id_prestamo" class="form-control" readonly>
+      </div>
+  
+      <div class="col-md-8"></div>
+      <div class="col-md-6" hidden>
+        <label for="idCuota" hidden>ID Cuota</label>
+        <input  type="text" hidden id="idCuota" name="idCuota" [(ngModel)]="objCuota.id_cuota" class="form-control" readonly>
+      </div>
+      <div class="col-md-6" hidden >
+        <label for="estado" hidden>Estado</label>
+        <input  type="text" id="estado" name="estado" hidden [(ngModel)]="objCuota.estado" class="form-control" readonly>
+      </div>
+
+      <div class="col-md-4">
+        <label for="numero">Número Cuota</label>
+        <input type="text" id="numero" name="numero" [(ngModel)]="objCuota.numero" class="form-control" readonly>
+      </div>
+  
+      <div class="col-md-8"></div>
+      <div class="col-md-6">
+        <label for="nombre">Nombre Cliente</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="objCuota.nombre" class="form-control" readonly>
+      </div>
+
+      <div class="col-md-6"></div>
+  
+      
+  
+      <div class="col-md-4">
+        <label for="monto">Monto</label>
+        <input type="text" id="monto" name="monto" [(ngModel)]="objCuota.monto" class="form-control" readonly>
+      </div>
+
+      <div class="col-md-4">
+        <label for="fechaVencimiento">Fecha Vencimiento</label>
+        <input type="text" id="fechaVencimiento" name="fechaVencimiento" [(ngModel)]="objCuota.fecha_vencimiento" class="form-control" readonly>
+      </div>
+
+      <div class="col-md-4"></div>
+
+      <div class="col-md-4">
+        <label for="mora">Mora</label>
+        <input type="text" id="mora" name="mora" [(ngModel)]="objCuota.mora" class="form-control" readonly>
+      </div>
+      
+  
+      <div class="col-md-4">
+        <label for="montoPagado">Monto a pagado</label>
+        <input type="text" id="montoPagado" name="montoPagado" [(ngModel)]="objCuota.monto_pagado" class="form-control" readonly>
+      </div>
+
+      <div class="col-md-4"></div>
+
+      <div class="col-md-4">
+        <label for="montoTotal">Monto Total</label>
+        <input type="text" id="montoTotal" name="montoTotal" [(ngModel)]="objCuota.montoTotal" class="form-control" readonly>
+      </div>
+
+      <div class="col-md-4">
+        <label for="montoAPagar">Monto a pagar</label>
+        <input type="text" id="montoAPagar" name="montoAPagar" [(ngModel)]="montoAPagar" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <button type="button" class="btn btn-success" [disabled]="isRealizarPagoDisabled" (click)="realizarPago()">Realizar Pago</button>
+        <button type="button" style="margin-left: 10px;" class="btn btn-dark" (click)="redirigirAVerPrestamos()">Cancelar</button>
+      </div>
+
+     
+  
+      
+    </form>
+  </div>
+  

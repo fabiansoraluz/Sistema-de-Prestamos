@@ -1,0 +1,61 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 3rem;
+}
+
+.cuentas__container-header,
+.form__solicitud-header{
+    display: flex;
+    font-weight: 500;
+    justify-content: space-between;
+}
+
+/* DISEÑO DE CUENTAS*/
+
+.cuentas__item{
+    background-color: #B5E5FF;
+    border-radius: 10px;
+    padding: 20px 15px;
+    margin-top: 1rem;
+    max-width: 400px;
+    cursor: pointer;
+}
+.cuentas__item .cuenta__banco{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+.cuenta__numero-container{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.cuentas__item .cuenta__tipo{
+    margin-top: 1rem;
+    font-weight: 500;
+    font-size: 20px;
+}
+.cuentas__item .cuenta__monto{
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+.form-control--area{
+    resize: none;
+    height: 150px;
+}
+
+.form-group-interes{
+    position: relative;
+}
+.btn-calcular{
+    position: absolute;
+    top: 6px;
+    font-size: 22px;
+    right: 10px;
+    border: none;
+    background-color: none;
+}

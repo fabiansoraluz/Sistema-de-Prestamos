@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
+    <div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToggle()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <a class="navbar-brand px-4" href="#">Header an SideNav</a>
+
+    <div class="navbar-collapse">
+        <ul class="navbar-nav me-auto">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Menu 1
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Opcion 1</a></li>
+                    <li><a class="dropdown-item" href="#">Opcion 2</a></li>
+                    <li><a class="dropdown-item" href="#">Opcion 3</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Menu 2
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Opcion 1</a></li>
+                    <li><a class="dropdown-item" href="#">Opcion 2</a></li>
+                    <li><a class="dropdown-item" href="#">Opcion 3</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Menu 3
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Opcion 1</a></li>
+                    <li><a class="dropdown-item" href="#">Opcion 2</a></li>
+                    <li><a class="dropdown-item" href="#">Opcion 3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <form class="d-flex me-5">
+
+        <input type="search" placeholder="Buscar" class="form-control me-2">
+        <button class="btn btn-outline-light" type="submit">Buscar</button>
+
+    </form>
+
+    <div class="profile-logo dropstart">
+        <button class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+            Admin
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#">Iniciar Sesion</a></li>
+            <li><a href="#" class="dropdown-item">Registrarse</a></li>
+            <li><a href="#" class="dropdown-item">Tu Perfil</a></li>
+            <li><a href="#" class="dropdown-item">Cerrar Sesion</a></li>
+        </ul>
+    </div>
+    <div class="usuario-container btn btn-outline-light mx-3">
+        <i class="fa-solid fa-user"></i>
+        {{username}}
+    </div>
+    <div class="logout-container">
+        <button class="btn btn-outline-light mx-3" (click)="logout()" data-bs-toggle="dropdown">
+            <i class="fa-solid fa-right-from-bracket"></i> Log Out
+        </button>
+    </div>
+</nav>

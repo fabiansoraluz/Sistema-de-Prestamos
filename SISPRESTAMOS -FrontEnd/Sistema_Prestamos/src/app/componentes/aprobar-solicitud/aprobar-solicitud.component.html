@@ -1,0 +1,47 @@
+<div class="container">
+    <h2>Aprobar Solicitud</h2>
+    <form class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label">Numero de solicitud</label>
+            <input type="text" class="form-control" matInput name="numeroSolicitud" [(ngModel)]="solicitud.id" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Nombre del prestatario</label>
+            <input type="text" class="form-control" matInput name="nombrePrestatario" [(ngModel)]="solicitud.cliente.persona.nombre" readonly>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Monto</label>
+            <input type="text" class="form-control" matInput name="monto" [(ngModel)]="solicitud.monto" readonly>
+        </div>
+        <!--
+        <div class="col-md-4">
+            <label class="form-label">Interes</label>
+            <input type="text" class="form-control" matInput name="interes">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Tasa Mensual</label>
+            <input type="number" class="form-control" matInput name="tasaMensual" >
+        </div>
+        -->
+        <div class="col-md-4">
+            <label class="form-label">Fecha de préstamo</label>
+            <input type="text" class="form-control" matInput name="fechaPrestamo" [(ngModel)]="solicitud.fechaSolicitud" readonly  >
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Numero de Cuenta Bancaria</label>
+            <input type="text" class="form-control" matInput name="numeroCuenta"  [(ngModel)]="solicitud.cuenta.numero" readonly >
+        </div>
+
+        <!--
+        <div class="col-md-4">
+            <label class="form-label">Días</label>
+            <input type="number" class="form-control" matInput name="dias" >
+        </div>
+        -->
+        <div class="col-md-4">
+            <button type="button" class="btn btn-success" style="margin-top: 28px; margin-right: 9px;" (click)="aprobarSolicitud()">Aprobar</button>
+            <button type="button" class="btn btn-danger" style="margin-top: 28px; margin-right: 9px;" (click)="rechazarSolicitud()">Desaprobar</button>
+            <button type="submit" class="btn btn-dark" style="margin-top: 28px; margin-right: 9px;" routerLink="/admin/listar-solicitud">Cancelar</button>
+        </div>
+    </form>
+</div>

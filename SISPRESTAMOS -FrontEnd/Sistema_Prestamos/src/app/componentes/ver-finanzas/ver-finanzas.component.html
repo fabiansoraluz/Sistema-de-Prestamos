@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <h1 class="text-dark">Rendimiento Financiero</h1>
+    
+    <div class="row mt-5">
+        <h2 class="col-2">Jefe Prestamista</h2>
+        <div class="form-group col-4">
+            <select name="" id="" class="form-control" [(ngModel)]="idJefe" (change)="cambiarGrupo()">
+                <option value=0 disabled selected>Seleccionar Jefe</option>
+                <option [value]="j.id" *ngFor="let j of jefes">{{j.persona.nombre + ' ' + j.persona.paterno}}</option>
+            </select>
+        </div>
+    </div>
+
+
+    <table class="table table-striped mt-3 table-group-divider" id="TablaPrestamistas">
+        <thead>
+            <tr>
+                <th>Prestamista</th>
+                <th>Prestado</th>
+                <th>Pagado</th>
+                <th>Pendiente</th>
+                <th>Rentabilidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of lista">
+                <td>{{x.prestamista}}</td>
+                <td>{{x.prestado | number:'1.2-2'}}</td>
+                <td>{{x.pagado | number:'1.2-2'}}</td>
+                <td>{{x.pendiente | number:'1.2-2'}}</td>
+                <td>{{x.rentabilidad | percent}}</td>
+            </tr>
+        </tbody>
+        <tfoot class="table-dark">
+            <tr>
+                <td>Total</td>
+                <td>{{final.prestado | number:'1.2-2'}}</td>
+                <td>{{final.pagado | number:'1.2-2'}}</td>
+                <td>{{final.pendiente | number:'1.2-2'}}</td>
+                <td>{{final.rentabilidad | percent}}</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

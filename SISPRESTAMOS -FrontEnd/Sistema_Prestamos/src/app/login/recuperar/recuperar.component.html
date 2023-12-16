@@ -1,0 +1,53 @@
+<main class="main">
+    <div class="main__container">
+        <div class="main__img--bg">
+            <div class="main__img--container">
+                <div class="logo__container">
+                    <img src="../../../assets/img/logo--white.png" alt="#">
+                </div>
+                <figure class="main__figure">
+                    <img src="../../../assets/img/recuperar-img.svg" alt="" class="main__img">
+                </figure>
+                <div class="main__button-container">
+                    <button type="button" routerLink="/login" class="main__button main__button--registrar">Login</button>
+                    <button type="button" routerLink="/registrar" class="main__button main__button--recuperar">Registrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="main__form-container">
+            <h2 class="form__title">Recuperar Contraseña</h2>
+            <form class="main__form" [formGroup]="formulario" (ngSubmit)="recuperar()" errorTailor>
+                <div class="form__item form__item--doble form__item--email">
+                    <i class="fa-solid fa-envelope form__icon"></i>
+                    <input type="email" class="form__input form__input--email" placeholder="Correo Electrónico" name="correo" formControlName="correo">
+                    <button type="button" (click)="enviarCorreo()" class="form__button--enviar" [disabled]="formulario.get('correo').invalid"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+                <div class="form__item form__item--doble">
+                    <i class="fa-solid fa-code-compare form__icon"></i>
+                    <input type="text" class="form__input" placeholder="Ingresar key" name="key" [(ngModel)]="usuario.key" formControlName="key" [controlErrorsTpl]="messageKeyError">
+                </div>
+                <div class="form__item form__item--doble">
+                    <i class="fa-solid fa-key form__icon"></i>
+                    <input type="password" class="form__input form__input--pass" placeholder="Password" name="password" formControlName="password" [controlErrorsTpl]="messagePasswordError">
+                    <img src="../../../assets/img/eye.svg" alt="eye" class="form__icon--eye">
+                </div>
+                <div class="form__item--submit">
+                    <button type="submit" class="form__submit" [disabled]="formulario.invalid">Recuperar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<ng-template let-error let-text="text" #messageKeyError>
+    <div class="form__message" *ngIf="formulario.get('key').invalid">
+        <p *ngIf="error.required">Campo obligatorio</p>
+        <p *ngIf="error.pattern">Ingresar el formato: XXXX-XXXX-XXXX</p>
+    </div>
+</ng-template>
+<ng-template let-error let-text="text" #messagePasswordError>
+    <div class="form__message" *ngIf="formulario.get('password').invalid">
+        <p *ngIf="error.required">Campo Obligatorio</p>
+        <p *ngIf="error.pattern">Ingresar password entre 6 y 20 caracteres, formato: A-a-1</p>
+    </div>
+</ng-template>

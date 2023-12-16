@@ -1,0 +1,39 @@
+<div class="container">
+
+    <h1>Prestamos a cargo por cuotas</h1>
+  
+    <button type="button" class="btn btn-dark" (click)="redirigirAVerPrestamos()">Volver</button>
+    <div class="alert alert-info mt-3" *ngIf="informacionPrestamos.length==0">
+      No hay prestamos a tu cargo
+  </div>
+  
+  <table class="table mt-3 table-group-divider" *ngIf="informacionPrestamos.length>0">
+      <thead>
+        <tr>
+          <th>Prestamo</th>
+          <th>Nombre Cliente</th>
+          <th>Nro Cuota</th>
+          <th>Monto</th>
+          <th>Pagado</th>
+          <th>Fecha Vencimiento</th>
+          <th hidden>Id cuota</th>
+          <th>Estado</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prestamo of informacionPrestamos | paginate:{itemsPerPage:4, currentPage: page }">
+          <td>{{ prestamo.id_prestamo }}</td>
+          <td>{{ prestamo.nombre }}</td>
+          <td>{{ prestamo.numero }}</td>
+          <td>{{ prestamo.monto | number:'1.2-2' }}</td>
+          <td>{{ prestamo.monto_pagado | number:'1.2-2' }}</td>
+          <td>{{ prestamo.fecha_vencimiento }}</td>
+          <td hidden>{{ prestamo.id_cuota}}</td>
+          <td>{{ getEstadoLegible(prestamo.estado) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>  

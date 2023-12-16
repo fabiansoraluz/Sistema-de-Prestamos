@@ -1,0 +1,47 @@
+<div class="container">
+    <h2>Cuenta</h2>
+    <form class="form-group flex-column" [formGroup]="formulario">
+        <div class="col-md-4">
+            <label class="form-label" for="nomCuenta">Nombre de cuenta</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="tipo">Tipo de cuenta</label>
+            <select class="form-control" id="tipo" formControlName="tipo">
+                <option value="" selected disabled>Seleccionar Tipo de Cuenta</option>
+                <option *ngFor="let tipo of tipos" [value]="tipo.id">{{ tipo.nombre }}</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="banco">Banco</label>
+            <select class="form-control" aria-label="Default select example" id="banco" formControlName="banco">
+                <option value="" selected disabled>Seleccionar Banco</option>
+                <option *ngFor="let banco of bancos" [value]="banco">{{ banco }}</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="moneda">Moneda</label>
+            <select class="form-control" aria-label="Default select example" id="moneda" formControlName="moneda">
+                <option value="" selected disabled>Seleccionar Moneda</option>
+                <option *ngFor="let moneda of monedas" [value]="moneda">{{ moneda }}</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="numero">Numero de cuenta</label>
+            <input type="text" class="form-control" id="numero" name="numero" formControlName="numero" [controlErrorsTpl]="messageNumeroError">
+        </div>
+        <div class="col-md-4">
+            <br>
+            <button routerLink="/admin/listar-cuenta" type="submit" class="btn btn-dark" style="margin-right: 5px;">Volver</button>
+            <button type="button" class="btn btn-dark" (click)="registrarCuentaBancaria()" [disabled]="formulario.invalid" *ngIf="!isUpdating">Registrar</button>
+            <button type="button" class="btn btn-dark" (click)="actualizarCuentaBancaria()" [disabled]="formulario.invalid" *ngIf="isUpdating">Actualizar</button>
+        </div>
+    </form>
+</div>
+
+<ng-template let-error let-text="text" #messageNumeroError>
+    <div class="form__message" *ngIf="formulario.get('numero').invalid">
+        <p *ngIf="error.required">Campo Obligatorio</p>
+        <p *ngIf="error.pattern">Debes ingresar entre 12 a 20 digitos</p>
+    </div>
+</ng-template>

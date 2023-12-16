@@ -1,0 +1,68 @@
+<div class="container">
+   
+    <h2>{{isUpdate ? 'Actualizar Jefe de Prestamista':'Registrar Jefe de Prestamista'}}</h2>
+
+    <form class="row g-3" [formGroup]="formulario" errorTailor>
+        <div class="col-md-4">
+            <label class="form-label">Usuario</label>
+            <input type="text" class="form-control" name="username"  formControlName="username" [controlErrorsTpl]="messageUsernameError">
+        </div>
+        <div class="col-md-8">
+            <label class="form-label">Correo</label>
+            <input type="email" type="email" class="form-control" name="correo" formControlName="correo">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" formControlName="nombre">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Apellido Paterno</label>
+            <input type="text" class="form-control" name="paterno" formControlName="paterno">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Apellido Materno</label>
+            <input  type="text" class="form-control" name="materno" formControlName="materno">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Celular</label>
+            <input type="text" class="form-control" name="celular" formControlName="celular" [controlErrorsTpl]="messageCelularError">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Dni</label>
+            <input type="text" class="form-control" name="dni" formControlName="dni" [controlErrorsTpl]="messageDniError">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label" for="form1">ID Ubigeo</label>
+            <input type="text" class="form-control" name="ubigeo" formControlName="ubigeo">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label" for="form1">Ubigeo Grupo</label>
+            <input type="text" class="form-control" name="ubigeoGrupo" formControlName="ubigeoGrupo">
+        </div>
+        <div class="col-12">
+            <br>
+            <button (click)="btnGrabar()" type="submit" class="btn btn-dark" [disabled]="formulario.invalid">{{ isUpdate ? 'Actualizar' : 'Registrar'}}</button>
+        </div>
+    </form>
+
+</div>
+
+<ng-template let-error let-text="text" #messageDniError>
+    <div class="form__message" *ngIf="formulario.get('dni').invalid">
+        <p *ngIf="error.required">Campo Obligatorio</p>
+        <p *ngIf="error.pattern">Ingresar 8 dígitos</p>
+        <p *ngIf="error.min">Ingresar DNI Valido</p>
+    </div>
+</ng-template>
+<ng-template let-error let-text="text" #messageCelularError>
+    <div class="form__message" *ngIf="formulario.get('celular').invalid">
+        <p *ngIf="error.required">Campo Obligatorio</p>
+        <p *ngIf="error.pattern">Ingresar celular de 9 dígitos</p>   
+    </div>
+</ng-template>
+<ng-template let-error let-text="text" #messageUsernameError>
+    <div class="form__message" *ngIf="formulario.get('username').invalid">
+        <p *ngIf="error.required">Campo Obligatorio</p>
+        <p *ngIf="error.pattern">Ingresar username entre 6 y 12 caracteres</p>
+    </div>
+</ng-template>

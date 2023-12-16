@@ -1,0 +1,186 @@
+.modal-content{
+    width: 120% !important;
+}
+.btn-save{
+    background-color: var(--purple) !important;
+    color: var(--white) !important;
+}
+/* Configuracion*/
+img{
+    display: block;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main{
+    display: grid;
+    grid-template-rows: 15vh 70vh;
+    max-width: 1300px;
+    width: 90%;
+    margin: 0 auto;
+}
+.logo__container{
+    justify-self: end;
+    align-self: center;
+}
+
+/* ::::::::::: MAIN :::::::::::*/
+.main__container{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 5rem;
+}
+.main__form-container{
+    max-width: 650px;
+}
+
+/*::::::::::: MAIN-FORMULARIO :::::::::::*/
+.form__title{
+    font-size: 2.7rem;
+    text-transform: uppercase;
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 5px solid var(--gray);
+}
+
+.main__form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.form__item{
+    position: relative;
+    width: 48%;
+    color: var(--almost-black);
+}
+.form__item--submit{
+    width: 100%;
+}
+.form__icon{
+    position: absolute;
+    left: 15px;
+    top: 18px;
+    font-size: 20px;
+}
+.form__icon--eye{
+    position: absolute;
+    top: 1.2rem;
+    right: 1rem;
+    cursor: pointer;
+    width: 25px;
+    height: max-content;
+}
+.form__input{
+    padding: 15px 0px;
+    padding-left: 3rem;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--almost-white);
+    font-weight: 500;
+    outline: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.form__item--email{
+    width: 100%;
+}
+.form__input--ubigeo{
+    background-color: rgb(88, 88, 88);
+    color: var(--almost-white);
+    text-align: center;
+    padding-left: 0;
+}
+.form__submit{
+    margin-top: 3rem;
+    border: none;
+    border-radius: 10px;
+    padding: 20px 0;
+    color: var(--white);
+    background-color: #6C63FF;
+    font-weight: 500;
+    font-size: 20px;
+    width: 100%;
+    outline: none;
+}
+/*::::::::::: MAIN-IMG :::::::::::*/
+.main__img-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main__img{
+    width: 80%;
+    margin-top: 50px;
+    position: relative;
+}
+.main__figure{
+    position: relative;
+}
+.main__figure::before{
+    content: "";
+    background-color: var(--almost-purple);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    clip-path: circle(50% at 77% 77%);
+    z-index: -1;
+}
+
+.main__button-container{
+    width: 100%;
+    margin-top: auto;
+    position: relative;
+}
+.main__button{
+    width: 50%;
+}
+.main__button--registrar{
+    background-color: var(--green-2);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px 10px 0px;
+    clip-path: polygon(0 0, 100% 0%, 70% 100%, 0% 100%);
+    color: var(--white);
+    font-weight: 500;
+    font-size: 20px;
+    position: absolute;
+    left: 25px;
+    bottom: 0px;
+}
+.main__button--recuperar{
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0px 10px 30px;
+    font-weight: 500;
+    font-size: 20px;
+    clip-path: polygon(30% 0, 100% 0%, 100% 100%, 0% 100%);
+    position: absolute;
+    right: 25px;
+    bottom: 0px;
+}
+
+/* :::::::::::: MODAL-UBIGEO ::::::::::::::*/
+
+/*Header*/
+.modal-header,.modal-footer{
+    background-color: var(--almost-white);
+}
+
+/*Formulario*/
+.modal-body{
+    padding: 2rem 20px !important;
+}
+.form--ubigeo{
+    display: flex;
+    gap: 1rem;
+}
+.form__select--ubigeo{
+    border: 2px solid var(--almost-white);
+    padding: 1rem;
+    border-radius: 5px;
+    outline: none;
+    width: 150px;
+}

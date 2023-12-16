@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="form-group">
+    <label for="cardNumber">Número de Tarjeta:</label>
+    <div class="input-with-icon">
+      <input type="text" class="form-control" id="cardNumber" [(ngModel)]="cardNumber" name="cardNumber" (input)="validateCard()">
+      <img *ngIf="networkName === 'Visa'" [src]="getCardImage('Visa')" alt="Red de Tarjetas">
+      <img *ngIf="networkName === 'MasterCard'" [src]="getCardImage('MasterCard')" alt="Red de Tarjetas">
+      <img *ngIf="networkName === 'American Express'" [src]="getCardImage('American Express')" alt="Red de Tarjetas">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="cvc">CVC:</label>
+    <input type="text" class="form-control" id="cvc" [(ngModel)]="cvc" name="cvc" (input)="validateCVC()">
+  </div>
+  <div class="form-group">
+    <label for="expiry">Fecha de Vencimiento (MM/YY):</label>
+    <input type="text" class="form-control" id="expiry" [(ngModel)]="expiry" name="expiry" (input)="validateExpiry()">
+  </div>
+  <div class="form-group">
+    <label for="cardholderName">Nombre del Titular:</label>
+    <input type="text" class="form-control" id="cardholderName" [(ngModel)]="cardholderName" name="cardholderName">
+  </div>
+  <div>
+    <button type="submit" class="btn btn-dark" (click)="processPurchase()" [disabled]="!(cvcValid && expiryValid && cardholderName && cardNumberValid)">Procesar Compra</button>
+  </div>
+</div>

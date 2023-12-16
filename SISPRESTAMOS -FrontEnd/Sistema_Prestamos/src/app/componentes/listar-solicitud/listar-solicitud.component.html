@@ -1,0 +1,91 @@
+<div class="container mt-5">
+    <h1 class="text-dark">Solicitudes</h1>
+    <form class="form-row g-5">
+        <div class="col-md-4">
+            <label class="form-label">Prestatario</label>
+            <input type="text" class="form-control" name="prestatario" [(ngModel)]="solicitudDTO.nombre">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Estado</label>
+            <select class="form-control" matInput name="estado" [(ngModel)]="solicitudDTO.estado">
+                <option value=1>Pendiente</option>
+                <option value=2>Aprobado</option>
+                <option value=3>Rechazado</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-dark form-control" style="margin-top: 28px;" (click)="filtrar()">Filtrar</button>
+        </div>
+    </form>
+
+    <br>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table mt-3 table-group-divider" id="TablaPrestamistas">
+        <thead>
+            <tr>
+                <th>Numero de solicitud</th>
+                <th>Nombre del prestatario</th>
+                <th>Monto</th>
+                <th>Fecha solicitada</th>
+                <th>Banco</th>
+                <th>Estado</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="data.length > 0; else noSolicitudes">
+                <tr *ngFor="let item of data">
+                    <td>{{ item.id_solicitud }}</td>
+                    <td>{{ item.prestatario }}</td>
+                    <td>{{ item.monto }}</td>
+                    <td>{{ item.fec_solicitud}}</td>
+                    <td>{{ item.banco }}</td>
+                    <td class="{{obtenerEstadoSolicitud(item.estado)}}">{{
+                        obtenerEstadoSolicitud(item.estado) }}</td>
+                    <td>
+                        <div class="btn-group" role="group"
+                            aria-label="Acciones">
+                            <button class="btn btn-sm btn-primary ml-2"
+                                (click)="verSolicitud(item.id_solicitud)"
+                                [disabled]="item.estado !== 1">
+                                <i class="fas fa-edit"></i> Ver
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-container>
+            <ng-template #noSolicitudes>
+                <tr>
+                    <td colspan="6">
+                        <div class="alert alert-info mt-3">
+                            No hay solicitudes actualmente
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+
+</div>

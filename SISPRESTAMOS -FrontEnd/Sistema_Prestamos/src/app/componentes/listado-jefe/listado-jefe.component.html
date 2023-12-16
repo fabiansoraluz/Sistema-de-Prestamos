@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <h1 class="text-dark">Jefes Prestamistas</h1>
+    <div>
+        <button routerLink="/admin/mantenimiento-jefe/registrar" class="btn" *ngIf="usuario_rol !== 'jefe'">
+            <i class="btn btn-dark">Nuevo jefe</i> 
+        </button>                          
+    </div>
+
+    <div class="alert alert-info mt-3" *ngIf="listaJefe.length==0">
+        No hay jefes registrados
+    </div>
+        
+    <table class="table mt-3 table-group-divider" id="TablaPrestamistas" *ngIf="listaJefe.length>0">
+        <thead>
+            <tr>
+                <th>Grupo</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Localidad</th>
+                <th *ngIf="usuario_rol !== 'jefe'"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listaJefe | paginate:{itemsPerPage:2, currentPage: page } ">
+               <!--{{item|json}}-->               
+                
+                <td>{{item.id_grupo}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.paterno}}</td>
+                <td>{{item.materno}}</td>
+                <td>{{item.distrito}}</td>
+                <td *ngIf="usuario_rol !== 'jefe'">
+                    <div class="btn-group" role="group" aria-label="Acciones">
+                        <button class="btn btn-sm btn-primary" style="margin-right: 5px;" (click)="actualizar(item.id_persona)">
+                            <i class="fas fa-edit"></i> Actualizar
+                        </button>
+                        
+                        <button class="btn btn-sm btn-danger ml-2" (click)="eliminar(item.id_persona)">
+                            <i class="fas fa-trash"></i> Eliminar
+                          </button>                          
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+
+</div>
+

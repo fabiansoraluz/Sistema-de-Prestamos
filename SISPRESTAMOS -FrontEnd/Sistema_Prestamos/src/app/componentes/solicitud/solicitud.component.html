@@ -1,0 +1,80 @@
+<div class="container">
+    
+    <div class="cuentas__container">
+        <div class="cuentas__container-header">
+            <h2 class="titulo">Tus cuentas</h2>
+            <button class="btn btn-primary" routerLink="/admin/ingresar-cuenta">Nueva Cuenta</button>
+        </div>
+        <div class="cuentas__container-body" *ngFor="let cuenta of cuentas">
+            <div class="cuentas__item row" (click)="agregarCuenta(cuenta)">
+                <h3 class="cuenta__banco col-6">{{cuenta.banco}}</h3>
+                <p class="cuenta__numero-container col-6 mt-1">N° <span class="cuenta__numero">{{cuenta.numero}}</span></p>
+                <p class="cuenta__tipo col-6">Tipo: <span>{{cuenta.tipo.nombre}}</span> </p>
+                <p class="cuenta__monto col-6 text-right">{{cuenta.moneda}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <form [formGroup]="formulario" class="form__solicitud" (ngSubmit)="registrarSolicitud()" errorTailor>
+        <div class="form__solicitud-header">
+            <h2>Registrar solicitud</h2>
+            <button class="btn btn-primary ml-auto" [disabled]="formulario.invalid">Registrar</button>
+        </div>
+        <div class="form__solicitud-body row">
+            <div class="form-group col-12">
+                <label for="">N° de Cuenta</label>
+                <input type="text" class="form-control" name="numero" formControlName="numero" [controlErrorsTpl]="messageNumeroError" readonly>
+            </div>
+            <div class="form-group col-6">
+                <label for="dias">Dias</label>
+                <select name="dias" class="form-control" id="dias" formControlName="dias">
+                    <option value="" disabled selected>Seleccionar Dias</option>
+                    <option value=10>10 Días</option>
+                    <option value=15>15 Días</option>
+                    <option value=20>20 Días</option>
+                    <option value=25>25 Días</option>
+                    <option value=30>30 Días</option>
+                </select>
+            </div>
+            <div class="form-group col-6">
+                <label for="">Monto de Prestamo</label>
+                <input type="text" class="form-control" name="monto" formControlName="monto" [controlErrorsTpl]="messageMontoError" (change)="calcularInteres()">
+            </div>
+            <div class="form-group col-6">
+                <label for="">Interes</label>
+                <div class="form-group-interes">
+                    <input type="text" class="form-control mr-1" name="interes" formControlName="interes" readonly [controlErrorsTpl]="messageInteresError">
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label for="">Observacion</label>
+                <textarea class="form-control form-control--area" name="observacion" formControlName="observacion" [controlErrorsTpl]="messageObservacionError"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+<ng-template let-error let-text="text" #messageNumeroError>
+    <div class="form__message" *ngIf="formulario.get('numero').invalid">
+        <p *ngIf="error.required">El campo numero es obligatorio</p>
+        <p *ngIf="error.pattern">Ingresar de 12 a 20 digitos</p>
+    </div>
+</ng-template>
+<ng-template let-error let-text="text" #messageMontoError>
+    <div class="form__message" *ngIf="formulario.get('monto').invalid">
+        <p *ngIf="error.required">El monto es obligatorio</p>
+        <p *ngIf="error.pattern">Ingresar hasta 2 decimales</p>
+        <p *ngIf="error.min">El minimo debe ser 200 soles</p>
+    </div>
+</ng-template>
+<ng-template let-error let-text="text" #messageInteresError>
+    <div class="form__message" *ngIf="formulario.get('interes').invalid">
+        <p *ngIf="error.required">Debes calcular el interes</p>
+    </div>
+</ng-template>
+<ng-template let-error let-text="text" #messageObservacionError>
+    <div class="form__message" *ngIf="formulario.get('observacion').invalid">
+        <p *ngIf="error.required">El campo observacion es obligatorio</p>
+        <p *ngIf="error.pattern">Ingresar hasta 200 caracteres</p>
+    </div>
+</ng-template>

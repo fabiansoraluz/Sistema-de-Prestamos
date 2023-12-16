@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    --font-poppins: 'Poppins',sans-serif;
+    --font-rubik:   'Rubik',sans-serif;
+    --white:        #ffffff;
+    --black:        #000000;
+    --purplee-gray: #F2F2FF;
+    --green:        #00BB61;
+    --purple:       #6C63FF;
+    --purple-hover: #9c96ff;
+    --gray:         #F4F4F4;
+    --almost-black: #606060;
+    --green-2:      #21925B;
+    --almost-purple:#F2F2FF;
+    --almost-white: #F4F4F4;
+    --gray:         #ADADAD;
+    --almost-black: #606060;
+    --valid-red:    #dc3545;
+    --valid-green:  rgb(18, 102, 18);
+}
+/*Estilos de Validación*/
+input.ng-touched.ng-invalid{
+    border: 2px var(--valid-red) solid;
+    border-radius: 10px;
+}
+.form__icon--valid{
+    position: absolute;
+    top: 1rem;
+    right: 10px;
+    font-size: 20px;
+}
+
+/* Mensaje de validación*/
+.form__message{
+    margin-top: 10px;
+    color: var(--valid-red);
+    padding-left: 10px;
+}
+.control-error {
+    width: 100%;
+    margin-top: 0.25rem;
+    color: #dc3545;
+    padding-left: 10px;
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
